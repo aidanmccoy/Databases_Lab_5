@@ -1,0 +1,59 @@
+-- aimccoy
+
+CREATE TABLE Campuses (
+	ID INTEGER(10) PRIMARY KEY,
+	Campus VARCHAR(100) NOT NULL,
+	Location VARCHAR(20) NOT NULL,
+	County VARCHAR(20) NOT NULL,
+	Year INTEGER NOT NULL
+);
+
+CREATE TABLE Fees (
+	Campus INTEGER NOT NULL,
+	Year INTEGER NOT NULL,
+	CampusFee INTEGER NOT NULL,
+	PRIMARY KEY (Campus, Year)
+);
+
+CREATE TABLE Degrees (
+	Year INTEGER NOT NULL,
+	Campus INTEGER NOT NULL,
+	Degrees INTEGER NOT NULL,
+	PRIMARY KEY (Campus, Year),
+	FOREIGN KEY (Campus) REFERENCES Campuses (ID)
+);
+
+CREATE TABLE Disciplines (
+	ID INTEGER PRIMARY KEY,
+	Name VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE DiscEnroll (
+	Campus INTEGER NOT NULL,
+	Discipline INTEGER NOT NULL,
+	Year INTEGER NOT NULL,
+	Undergraduate INTEGER,
+	Graduate INTEGER,
+	PRIMARY KEY (Campus, Discipline, Year),
+	FOREIGN KEY (Campus) REFERENCES Campuses (ID),
+	FOREIGN KEY (Discipline) REFERENCES Disciplines (ID)
+);
+
+CREATE TABLE Enrollments (
+	Campus INTEGER NOT NULL,
+	Year INTEGER NOT NULL,
+	TotalEnrollment_AY INTEGER NOT NULL,
+	FTE_AY INTEGER,
+	PRIMARY KEY (Campus, Year),
+	FOREIGN KEY (Campus) REFERENCES Campuses (ID)
+);
+
+CREATE TABLE Faculty (
+	Campus INTEGER NOT NULL,
+	Year INTEGER NOT NULL,
+	Faculty NUMERIC(6,1) NOT NULL,
+	PRIMARY KEY (Campus, Year),
+	FOREIGN KEY (Campus) REFERENCES Campuses (ID)
+);
+
+
