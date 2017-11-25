@@ -22,7 +22,7 @@ select * from items;
 
 select * from Items where Ordinal = 1;
 
---Here are my changes
+--Here are my changes, These are wrong
 
 
 -- BAKERY-1 For each pastry flavor which is found in more than three types of
