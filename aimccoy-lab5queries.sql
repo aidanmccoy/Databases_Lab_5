@@ -22,6 +22,8 @@ select * from items;
 
 select * from Items where Ordinal = 1;
 
+--Here are my changes
+
 
 -- BAKERY-1 For each pastry flavor which is found in more than three types of
 -- pastries sold by the bakery, report the average price of an item of this
